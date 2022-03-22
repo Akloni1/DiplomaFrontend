@@ -1,0 +1,32 @@
+<!--<div class="col-xs-8 col-xs-offset-2">
+  <form (ngSubmit)="submitForm()" #form='ngForm'>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" class="form-control" ngModel name="email" required email #email="ngModel">
+      <button type="button" class="btn btn-primary" (click)="randEmail()">добавить рандомный email</button>
+      <p *ngIf="email.invalid && email.touched">Введите корректный email</p>
+    </div>
+    <div class="form-group">
+      <label>Пароль</label>
+      <input type="password" class="form-control" ngModel name="pass" required #pass="ngModel">
+      <p *ngIf="pass.invalid && pass.touched">Введите корректный пароль</p>
+    </div>
+    <div class="form-group">
+      <label>Выберите страну</label>
+      <select class="form-control" ngModel name="countru">
+        <option value="ru">Россия</option>
+        <option value="by">Белоруссия</option>
+        <option value="ua">Украина</option>
+      </select>
+    </div>
+    <div class="radio" *ngFor="let ans of answers">
+      <label>
+        <input type="radio" [value]="ans.type" ngModel name="answer"> {{ans.text}}
+      </label>
+    </div>
+    <button class="btn btn-success" type="submit" [disabled]="!form.valid">Сохранить</button>
+   
+  </form>
+  <div *ngIf="stateBtn"><pre>{{dataForm | json}}</pre></div>
+</div>-->

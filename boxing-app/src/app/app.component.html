@@ -1,0 +1,56 @@
+
+
+
+
+<!--<app-boxer></app-boxer>
+<div class="container">
+    <div class="row">
+        <div class=".col-xs-12">
+            <div>
+                {{coacher | json}}
+            </div>
+        </div>
+    </div>
+</div>
+<app-form></app-form>-->
+
+<!--<app-boxer></app-boxer>
+
+<app-home></app-home>-->
+<div class="container">
+    <nav class="navbar navbar-default">
+<table  class="table table-striped">
+    <tr class="table-dark">
+        <td >
+            <a routerLink="" class="list-group-item"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
+                <span class="glyphicon glyphicon-user"></span> главная 
+            </a>  
+    </td>
+    <td>
+        <a routerLink="/boxers" class="list-group-item" routerLinkActive="active">
+            <span class="glyphicon glyphicon-user"></span> боксеры  
+        </a>
+    </td>
+    
+    <td>
+        <a routerLink="/boxingClubs" class="list-group-item" routerLinkActive="active">
+            <span class="glyphicon glyphicon-th-list"></span> Боксерские клубы 
+        </a>
+    </td>
+    <td>
+        <a routerLink="/coach" class="list-group-item" routerLinkActive="active">
+            <span class="glyphicon glyphicon-th-list"></span>  Тренера  
+        </a>
+    </td>
+
+    <td>
+        <a routerLink="/competitions" class="list-group-item" routerLinkActive="active">
+            <span class="glyphicon glyphicon-th-list"></span>  Соревнования  
+        </a>
+    </td>
+      </tr>
+</table>
+</nav>
+<router-outlet> </router-outlet>
+
+</div>

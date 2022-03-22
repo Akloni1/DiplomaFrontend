@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 appBackground [hoverColor]="'blue'" [defColor]="'transparent'">
+          BoxingClubs
+        </h2>
+  
+        <button class="btn btn-success me-2" [routerLink]="['/boxingClubs/add']">
+          добавить боксерский клуб
+        </button>
+        <ul>
+          <li class="list-group-item" *ngFor="let item of boxingClubs">
+            <p>
+              {{ item.clubName }} | {{ item.clubAddress }} 
+            </p>
+  
+            <button
+              [routerLink]="['/boxingClubs', item.boxingClubId]"
+              class="btn btn-outline-info me-2"
+            >
+              изменить
+            </button>
+            <button
+              class="btn btn-outline-danger me-2"
+              (click)="deleteBoxingClub(item.boxingClubId)"
+            >
+              Удалить
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

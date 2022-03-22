@@ -1,0 +1,44 @@
+<h1>{{ id ? "Информация о соревнованиях " + id : "Добавление нового соревнования" }}</h1>
+<p>{{ competition | json }}</p>
+<hr />
+
+<div class="col-xs-8 col-xs-offset-2">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <p>Введите название соревнования</p>
+
+      <input
+        type="text"
+        class="form-control"
+        formControlName="competitionsName"
+        name="competitionsName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите Адрес</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="competitionsAddress"
+        name="competitionsAddress"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите время начала</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="startTime"
+        name="startTime"
+      />
+    </div>
+
+    <hr />
+
+    <button class="btn btn-primary" type="submit">
+      {{ id ? "Сохранить" : "Добавить" }}
+    </button>
+  </form>
+</div>

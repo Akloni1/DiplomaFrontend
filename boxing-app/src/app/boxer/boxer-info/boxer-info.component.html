@@ -1,0 +1,124 @@
+<h1>{{ id ? "Информация о боксере " + id : "Добавление нового боксера" }}</h1>
+<p>{{ boxer | json }}</p>
+<hr />
+
+<div class="col-xs-8 col-xs-offset-2">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="form-group">
+      <p>Введите Имя</p>
+
+      <input
+        type="text"
+        class="form-control"
+        formControlName="firstName"
+        name="firstName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите Фамилию</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="lastName"
+        name="lastName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите отчество</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="middleName"
+        name="middleName"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите дату</label>
+      <input
+        type="date"
+        class="form-control"
+        formControlName="dateOfBirth"
+        name="dateOfBirth"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите вес</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="weight"
+        name="weight"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите спортивное звание</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="discharge"
+        name="discharge"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите количесво боев</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="numberOfFightsHeld"
+        name="numberOfFightsHeld"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите количесво побед</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="numberOfWins"
+        name="numberOfWins"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>сколько лет занимаетесь боксом</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="trainingExperience"
+        name="trainingExperience"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите ID своего тренера</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="coachId"
+        name="coachId"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Введите ID своего боксерского клуба</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="boxingClubId"
+        name="boxingClubId"
+      />
+    </div>
+
+    <hr />
+
+    <button class="btn btn-primary" type="submit">
+      {{ id ? "Сохранить" : "Добавить" }}
+    </button>
+  </form>
+</div>

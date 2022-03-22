@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 appBackground [hoverColor]="'blue'" [defColor]="'transparent'">
+          Coach
+        </h2>
+  
+        <button class="btn btn-success me-2" [routerLink]="['/coach/add']">
+          добавить тренера
+        </button>
+        <ul>
+          <li class="list-group-item" *ngFor="let item of coaches">
+            <p>
+              {{ item.firstName }} | {{ item.lastName }} |
+              {{ item.middleName }} | {{ item.sportsTitle }} 
+            </p>
+  
+            <button
+              [routerLink]="['/coach', item.coachId]"
+              class="btn btn-outline-info me-2"
+            >
+              изменить
+            </button>
+            <button
+              class="btn btn-outline-danger me-2"
+              (click)="deleteCoach(item.coachId)"
+            >
+              Удалить
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
