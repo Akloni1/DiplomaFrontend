@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 appBackground [hoverColor]="'blue'" [defColor]="'transparent'">
+        Боксерские клубы которые не участвую в соревнованиях, ID соревнований -
+        {{ id }}
+      </h2>
+
+      <p *ngIf="boxingClubs.length == 0">
+        На этом соревновании участвуют все боксерские клубы
+      </p>
+      <ul>
+        <li class="list-group-item" *ngFor="let item of boxingClubs">
+          <p>{{ item.clubName }} | {{ item.clubAddress }} |</p>
+          <button
+            *ngIf="pageDefinition"
+            class="btn btn-outline-info me-2"
+            (click)="addBoxingClubInCompetitions(item.boxingClubId)"
+          >
+            Добавить клуб
+          </button>
+          <button
+            *ngIf="!pageDefinition"
+            class="btn btn-outline-danger me-2"
+            (click)="deleteBoxingClubInCompetitions(item.boxingClubId)"
+          >
+            удалить клуб
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

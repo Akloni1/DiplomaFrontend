@@ -33,11 +33,17 @@
         </button>
 
         <button
-        [routerLink]="['/boxers', item.competitionsId]"
+        [routerLink]="['/competitions/boxingClub/not/participating', item.competitionsId]"
         class="btn btn-outline-info me-2"
       >
         Добавить боксерские клубы
       </button>
+      <button
+      [routerLink]="['/competitions/boxingClub', item.competitionsId]"
+      class="btn btn-outline-info me-2"
+    >
+      удалить боксерские клубы
+    </button>
 
       <button
       [routerLink]="['/competitions/boxers', item.competitionsId]"

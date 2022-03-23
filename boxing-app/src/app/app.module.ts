@@ -28,6 +28,7 @@ import { CompetitionModule } from './competitions/competitions.module';
 import { CompetitionBoxersModule } from './competitions-boxers-add/competitions-boxers-add.module';
 import { CompetitionBoxersDeleteModule } from './competitions-boxers-delete/competitions-boxers-delete.module';
 import { ComparisonBoxersModule } from './comparison-boxers/comparison-boxers.module';
+import { CompetitionBoxingClubsModule } from './competitions-boxingClub/competitions-boxingClub.module';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { ComparisonBoxersModule } from './comparison-boxers/comparison-boxers.mo
     CompetitionModule,
     CompetitionBoxersModule,
     CompetitionBoxersDeleteModule,
+    CompetitionBoxingClubsModule,
     ComparisonBoxersModule,
     SharedModule
 
