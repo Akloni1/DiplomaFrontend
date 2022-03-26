@@ -25,8 +25,7 @@ import { SharedModule } from './shared/shared.module';
 import { BoxingClubModule } from './boxingClub/boxingClub.module';
 import { CoachModule } from './coach/coach.module';
 import { CompetitionModule } from './competitions/competitions.module';
-import { CompetitionBoxersModule } from './competitions-boxers-add/competitions-boxers-add.module';
-import { CompetitionBoxersDeleteModule } from './competitions-boxers-delete/competitions-boxers-delete.module';
+import { CompetitionBoxersModule } from './competitions-boxers/competitions-boxers.module';
 import { ComparisonBoxersModule } from './comparison-boxers/comparison-boxers.module';
 import { CompetitionBoxingClubsModule } from './competitions-boxingClub/competitions-boxingClub.module';
 
@@ -58,7 +57,9 @@ import { CompetitionBoxingClubsModule } from './competitions-boxingClub/competit
     CoachModule,
     CompetitionModule,
     CompetitionBoxersModule,
-    CompetitionBoxersDeleteModule,
+   // CompetitionBoxersDeleteModule,
+   
+
     CompetitionBoxingClubsModule,
     ComparisonBoxersModule,
     SharedModule
