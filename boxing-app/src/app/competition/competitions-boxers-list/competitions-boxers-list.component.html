@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2
+        *ngIf="pageDefinition"
+        appBackground
+        [hoverColor]="'blue'"
+        [defColor]="'transparent'"
+      >
+        боксеры которые не участвую в соревнованиях, ID соревнований -
+        {{ id }}
+      </h2>
+
+      <h2
+        *ngIf="!pageDefinition"
+        appBackground
+        [hoverColor]="'blue'"
+        [defColor]="'transparent'"
+      >
+        боксеры которые участвую в соревнованиях, ID соревнований -
+        {{ id }}
+      </h2>
+
+      <p *ngIf="boxers.length == 0 && !pageDefinition">
+        На этом соревновании не участвует ни одного боксера
+      </p>
+
+      <p *ngIf="boxers.length == 0 && pageDefinition">
+        На этом соревновании участвуют все боксеры
+      </p>
+      <ul>
+        <li class="list-group-item" *ngFor="let item of boxers">
+         
+          <p>
+            {{ item.firstName }} | {{ item.lastName }} |
+            {{ item.dateOfBirth | date }} | {{ item.weight }} кг.
+          </p>
+          <button
+            *ngIf="(pageDefinition&&user.role=='boxer'&&user.boxerId==item.boxerId)||
+            (pageDefinition&&user.role=='coach'&&user.coachId==item.coachId)||
+            (pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)"
+
+            class="btn btn-outline-info me-2"
+            (click)="addBoxerInCompetitions(item.boxerId)"
+          >
+            Добавить боксера
+          </button>
+          <button
+           *ngIf="(!pageDefinition&&user.role=='boxer'&&user.boxerId==item.boxerId)||
+            (!pageDefinition&&user.role=='coach'&&user.coachId==item.coachId)||
+            (!pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)"
+            class="btn btn-outline-danger me-2"
+            (click)="deleteBoxerInCompetitions(item.boxerId)"
+          >
+            удалить боксера
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

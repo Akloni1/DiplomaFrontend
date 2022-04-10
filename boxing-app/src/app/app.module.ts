@@ -24,10 +24,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { BoxingClubModule } from './boxingClub/boxingClub.module';
 import { CoachModule } from './coach/coach.module';
-import { CompetitionModule } from './competitions/competitions.module';
-import { CompetitionBoxersModule } from './competitions-boxers/competitions-boxers.module';
-import { ComparisonBoxersModule } from './comparison-boxers/comparison-boxers.module';
-import { CompetitionBoxingClubsModule } from './competitions-boxingClub/competitions-boxingClub.module';
+import { CompetitionsModule } from './competition/competitions.module';
+import { LoginModule } from './login/login.module';
 
 
 @NgModule({
@@ -55,13 +53,8 @@ import { CompetitionBoxingClubsModule } from './competitions-boxingClub/competit
     BoxersModule,
     BoxingClubModule,
     CoachModule,
-    CompetitionModule,
-    CompetitionBoxersModule,
-   // CompetitionBoxersDeleteModule,
-   
-
-    CompetitionBoxingClubsModule,
-    ComparisonBoxersModule,
+    CompetitionsModule,
+    LoginModule,
     SharedModule
 
   ],

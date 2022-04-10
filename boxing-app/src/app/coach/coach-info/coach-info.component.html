@@ -47,6 +47,38 @@
         />
       </div>
 
+      <div *ngIf="!id" class="form-group">
+        <label>Введите логин</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="login"
+          name="login"
+        />
+      </div>
+
+      <div *ngIf="!id" class="form-group">
+        <label>Введите пароль</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="password"
+          name="password"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Выберете роль</label>
+        <select
+          class="form-group"
+          type="text"
+          class="form-control"
+          formControlName="role"
+          name="role"
+        >
+          <option value="coach">coach</option>
+        </select>
+      </div>
 
       <div class="form-group">
         <label>Введите ID клуба</label>

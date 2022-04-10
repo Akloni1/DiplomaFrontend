@@ -4,6 +4,9 @@ export interface ICoach {
     lastName: string;
     middleName: string;
     sportsTitle: string;
-    boxingClubId: string;
+    boxingClubId: number;
+    login: string;
+    password?: string;
+    role:string;
   }
   

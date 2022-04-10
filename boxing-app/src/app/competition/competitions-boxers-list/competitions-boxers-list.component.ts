@@ -5,7 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
 import { ICompetitionBoxers } from '../competitions-boxers-participant.interface';
 import { IBoxer } from '../competitions-boxers.interface';
-import { CompetitionBoxersService } from '../competitions-boxers.service';
+import { IUser } from '../user.interface';
+import { CompetitionService } from '../competitions.service';
 
 @Component({
   selector: 'app-competition-boxers',
@@ -19,44 +20,63 @@ export class CompetitionBoxersListComponents implements OnInit {
     competitionsId: 0,
     boxerId: 0,
   };
+  payloadValid: ICompetitionBoxers = {
+    competitionsId: 0,
+    boxerId: 0,
+  };
+  token: string | null = null;
+  user: IUser={
+    boxerId: 0,
+    boxingClubId:0,
+    coachId: 0,
+    role:""
+    
+  };
+
   pageDefinition = window.location.hash.split('/')[3] === 'not';
 
   private subscriptions$ = new Subscription();
   constructor(
-    private CompetitionBoxersService: CompetitionBoxersService,
+    private CompetitionService: CompetitionService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    this.token = localStorage.getItem('auth_token');
+    if(this.token!==null){
     if (this.pageDefinition) {
       console.log(window.location.hash.split('/')[3]);
       const id = this.route.snapshot.params['id'];
       this.id = id;
-      this.CompetitionBoxersService.getBoxersNotParticipatingById(
-        id
-      ).subscribe((response) => {
-        this.boxers = response;
-      });
+      this.CompetitionService.getBoxersNotParticipatingById(id).subscribe(
+        (response) => {
+          this.boxers = response;
+        }
+      );
     } else {
       const id = this.route.snapshot.params['id'];
       this.id = id;
-      this.CompetitionBoxersService.getBoxersParticipatingById(
-        id
-      ).subscribe((response) => {
-        this.boxers = response;
-      });
+      this.CompetitionService.getBoxersParticipatingById(id).subscribe(
+        (response) => {
+          this.boxers = response;
+        }
+      );
     }
+    this.CompetitionService.getUserByToken().subscribe((response) => {
+      this.user = response;
+    });
+  }
   }
 
   addBoxerInCompetitions(id: number) {
     this.payload.competitionsId = this.id;
     this.payload.boxerId = id;
     this.subscriptions$.add(
-      this.CompetitionBoxersService.addBoxerInCompetitions(this.payload)
+      this.CompetitionService.addBoxerInCompetitions(this.payload)
         .pipe(
           switchMap(() => {
-            return this.CompetitionBoxersService.getBoxersNotParticipatingById(
+            return this.CompetitionService.getBoxersNotParticipatingById(
               this.id
             );
           })
@@ -71,11 +91,11 @@ export class CompetitionBoxersListComponents implements OnInit {
     this.payload.competitionsId = this.id;
     this.payload.boxerId = id;
     this.subscriptions$.add(
-      this.CompetitionBoxersService.deleteBoxerInCompetitions(this.payload)
+      this.CompetitionService.deleteBoxerInCompetitions(this.payload)
 
         .pipe(
           switchMap(() => {
-            return this.CompetitionBoxersService.getBoxersParticipatingById(
+            return this.CompetitionService.getBoxersParticipatingById(
               this.id
             );
           })
@@ -85,4 +105,6 @@ export class CompetitionBoxersListComponents implements OnInit {
         })
     );
   }
+
+ 
 }

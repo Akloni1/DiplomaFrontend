@@ -33,6 +33,9 @@ export class BoxerInfoComponent implements OnInit {
       discharge: [null, Validators.required],
       coachId: [null, Validators.required],
       boxingClubId: [null, Validators.required],
+      login: [null, Validators.required],
+      password: [null, Validators.required],
+      role: [null, Validators.required],
     });
   }
 

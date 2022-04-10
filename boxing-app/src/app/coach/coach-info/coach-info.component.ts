@@ -28,6 +28,9 @@ export class CoachInfoComponent implements OnInit {
     middleName: [null, Validators.required],
     sportsTitle: [null, Validators.required],
     boxingClubId: [null, Validators.required],
+    login: [null, Validators.required],
+    password: [null, Validators.required],
+    role: [null, Validators.required],
     });
   }
 

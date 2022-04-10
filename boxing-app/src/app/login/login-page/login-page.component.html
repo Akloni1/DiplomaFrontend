@@ -1,0 +1,36 @@
+
+<div class="col-xs-8 col-xs-offset-2">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+   
+
+      <div class="form-group">
+        <label>Введите логин</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="login"
+          name="login"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Введите пароль</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="password"
+          name="password"
+        />
+      </div>
+
+     
+
+      
+
+    <hr />
+
+    <button class="btn btn-primary" type="submit">
+       Войти
+    </button>
+  </form>
+</div>

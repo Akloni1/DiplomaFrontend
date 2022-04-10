@@ -11,4 +11,7 @@ export interface IBoxer {
   numberOfFightsHeld: number;
   numberOfWins: number;
   trainingExperience: number;
+  login: string;
+  password?: string;
+  role:string;
 }

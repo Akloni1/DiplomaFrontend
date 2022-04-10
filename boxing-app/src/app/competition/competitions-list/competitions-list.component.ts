@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 
 import { ICompetition } from '../competitions.interface';
+import { IUser } from '../user.interface';
 import { CompetitionService } from '../competitions.service';
 @Component({
   selector: 'app-competitions-list',
@@ -13,6 +14,14 @@ import { CompetitionService } from '../competitions.service';
 
 export class CompetitionsListComponents implements OnInit {
   public competitions: ICompetition[] = [];
+  token: string | null = null;
+  user: IUser={
+    boxerId: 0,
+    boxingClubId:0,
+    coachId: 0,
+    role:""
+    
+  };
 
   constructor(
     private CompetitionService: CompetitionService,
@@ -20,9 +29,16 @@ export class CompetitionsListComponents implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.token = localStorage.getItem('auth_token');
+    if(this.token!==null){
     this.CompetitionService.getCompetitions().subscribe((response) => {
       this.competitions = response;
     });
+
+    this.CompetitionService.getUserByToken().subscribe((response) => {
+      this.user = response;
+    });
+  }
   }
 
   deleteCompetition(id: number) {

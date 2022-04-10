@@ -55,7 +55,7 @@
       />
     </div>
 
-    <div class="form-group">
+   <!-- <div class="form-group">
       <label>Введите спортивное звание</label>
       <input
         type="text"
@@ -63,6 +63,25 @@
         formControlName="discharge"
         name="discharge"
       />
+    </div>-->
+
+    <div class="form-group">
+      <label>Введите спортивное звание</label>
+      <select
+        class="form-group"
+        type="text"
+        class="form-control"
+        formControlName="discharge"
+        name="discharge"
+      >
+        <option value="Нет спортивного звания">Нет спортивного звания</option>
+        <option value="3 разряд">3 разряд</option>
+        <option value="2 разряд">2 разряд</option>
+        <option value="1 разряд">1 разряд</option>
+        <option value="КМС">КМС</option>
+        <option value="МС">МС</option>
+        <option value="МСМК">МСМК</option>
+      </select>
     </div>
 
     <div class="form-group">
@@ -113,6 +132,40 @@
         formControlName="boxingClubId"
         name="boxingClubId"
       />
+    </div>
+
+    <div *ngIf="!id" class="form-group">
+      <label>Введите логин</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="login"
+        name="login"
+      />
+    </div>
+
+    <div *ngIf="!id" class="form-group">
+      <label>Введите пароль</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="password"
+        name="password"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Выберете роль</label>
+      <select
+        class="form-group"
+        type="text"
+        class="form-control"
+        formControlName="role"
+        name="role"
+      >
+        <option value="boxer">boxer</option>
+        <option value="user">user</option>
+      </select>
     </div>
 
     <hr />

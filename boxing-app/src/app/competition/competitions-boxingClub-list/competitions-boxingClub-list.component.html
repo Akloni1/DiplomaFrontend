@@ -22,14 +22,14 @@
         <li class="list-group-item" *ngFor="let item of boxingClubs">
           <p>{{ item.clubName }} | {{ item.clubAddress }} |</p>
           <button
-            *ngIf="pageDefinition"
+            *ngIf="pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId"
             class="btn btn-outline-info me-2"
             (click)="addBoxingClubInCompetitions(item.boxingClubId)"
           >
             Добавить клуб
           </button>
           <button
-            *ngIf="!pageDefinition"
+            *ngIf="!pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId"
             class="btn btn-outline-danger me-2"
             (click)="deleteBoxingClubInCompetitions(item.boxingClubId)"
           >

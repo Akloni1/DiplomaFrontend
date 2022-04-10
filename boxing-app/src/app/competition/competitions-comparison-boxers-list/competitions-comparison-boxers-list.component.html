@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2 appBackground [hoverColor]="'blue'" [defColor]="'transparent'">
+        Пары боксеров, ID соревнований - {{ id }}
+      </h2>
+
+      <ul>
+        <h2>боксеры, которым нашлась пара</h2>
+        <li class="list-group-item" *ngFor="let item of comparisonBoxers?.res">
+          <p>
+            {{ item['boxer1'].lastName }} {{ item['boxer1'].firstName }}
+            {{ item['boxer1'].middleName }} | {{ item['boxer1'].dateOfBirth | date }} |
+            {{ item['boxer1'].weight + "кг" }} |
+            {{ item['boxer1'].trainingExperience + "лет занимается" }} |
+            {{ item['boxer1'].numberOfFightsHeld + "боев" }} |
+            {{ item['boxer1'].numberOfWins + "побед" }} | {{ item['boxer1'].discharge }}
+
+            ---VS--- {{ item['boxer2'].lastName }} {{ item['boxer2'].firstName }}
+            {{ item['boxer2'].middleName }} | {{ item['boxer2'].dateOfBirth | date }} |
+            {{ item['boxer2'].weight + "кг" }} |
+            {{ item['boxer2'].trainingExperience + "лет занимается" }} | 
+            {{ item['boxer2'].numberOfFightsHeld + "боев" }} |
+            {{ item['boxer2'].numberOfWins + "побед" }} | {{ item['boxer2'].discharge }}
+          </p>
+        </li>
+        <h2>боксеры, которым не нашлась пара</h2>
+        <li
+          class="list-group-item"
+          *ngFor="let item of comparisonBoxers?.notPaired"
+        >
+          <p>{{ item.lastName }} {{ item.firstName }} {{ item.middleName }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
