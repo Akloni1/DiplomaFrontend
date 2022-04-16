@@ -6,6 +6,8 @@ import { switchMap } from 'rxjs';
 import { ICoach } from '../coach.interface';
 import { IUser } from '../user.interface';
 import { CoachService } from '../coach.service';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
 @Component({
   selector: 'app-coaches-list',
   templateUrl: './coaches-list.component.html',
@@ -24,12 +26,18 @@ export class CoachesListComponents implements OnInit {
 
   constructor(
     private CoachService: CoachService,
-    private router: Router
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {}
 
   ngOnInit() {
     this.token = localStorage.getItem('auth_token');
     if(this.token!==null){
+      if (this.jwtHelper.isTokenExpired(this.token)) {
+        // token expired 
+        console.log("токен истек")
+        this.router.navigate(['/login']);
+      } else {
     this.CoachService.getCoaches().subscribe((response) => {
       this.coaches = response;
     });
@@ -37,7 +45,11 @@ export class CoachesListComponents implements OnInit {
       this.user = response;
     });
   }
-
+}
+  else{
+    console.log("токена нет")
+    this.router.navigate(['/login']);
+  }
   
   }
 

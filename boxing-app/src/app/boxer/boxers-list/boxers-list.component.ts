@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs';
 import { IBoxer } from '../boxer.interface';
 import { IUser } from '../user.interface';
 import { BoxerService } from '../boxer.service';
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-boxer',
@@ -21,11 +22,16 @@ export class BoxersListComponents implements OnInit {
      
    };
 
-  constructor(private BoxerService: BoxerService, private router: Router) {}
+  constructor(private BoxerService: BoxerService, private router: Router, private jwtHelper: JwtHelperService) {}
 
   ngOnInit() {
     this.token = localStorage.getItem('auth_token');
     if(this.token!==null){
+      if (this.jwtHelper.isTokenExpired(this.token)) {
+        // token expired 
+        console.log("токен истек")
+        this.router.navigate(['/login']);
+      } else {
     this.BoxerService.getBoxers().subscribe((response) => {
       this.boxers = response;
     });
@@ -35,8 +41,11 @@ export class BoxersListComponents implements OnInit {
      // console.log(response);
     });
   }
-  
-
+}
+else{
+  console.log("токена нет")
+  this.router.navigate(['/login']);
+}
   }
 
   deleteBoxer(id: number) {

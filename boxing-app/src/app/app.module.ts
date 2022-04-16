@@ -27,6 +27,8 @@ import { CoachModule } from './coach/coach.module';
 import { CompetitionsModule } from './competition/competitions.module';
 import { LoginModule } from './login/login.module';
 
+import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { LoginModule } from './login/login.module';
     SharedModule
 
   ],
-  providers: [],
+  providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
