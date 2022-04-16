@@ -5,7 +5,7 @@
           Coach
         </h2>
         <button 
-        *ngIf="user.role=='admin'"
+        *ngIf="(user.role=='admin')||(user.role=='lead')"
         class="btn btn-success me-2" [routerLink]="['/coach/add']">
           добавить тренера
         </button>
@@ -17,14 +17,14 @@
             </p>
   
             <button
-            *ngIf="user.role=='admin'&& user.boxingClubId==item.boxingClubId"
+            *ngIf="(user.role=='admin'&& user.boxingClubId==item.boxingClubId)||(user.role=='lead')"
               [routerLink]="['/coach', item.coachId]"
               class="btn btn-outline-info me-2"
             >
               изменить
             </button>
             <button
-            *ngIf="user.role=='admin'&& user.boxingClubId==item.boxingClubId"
+            *ngIf="(user.role=='admin'&& user.boxingClubId==item.boxingClubId)||(user.role=='lead')"
               class="btn btn-outline-danger me-2"
               (click)="deleteCoach(item.coachId)"
             >

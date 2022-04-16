@@ -38,7 +38,8 @@
           <button
             *ngIf="(pageDefinition&&user.role=='boxer'&&user.boxerId==item.boxerId)||
             (pageDefinition&&user.role=='coach'&&user.coachId==item.coachId)||
-            (pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)"
+            (pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)||
+            (pageDefinition&&user.role=='lead')"
 
             class="btn btn-outline-info me-2"
             (click)="addBoxerInCompetitions(item.boxerId)"
@@ -48,7 +49,8 @@
           <button
            *ngIf="(!pageDefinition&&user.role=='boxer'&&user.boxerId==item.boxerId)||
             (!pageDefinition&&user.role=='coach'&&user.coachId==item.coachId)||
-            (!pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)"
+            (!pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)||
+            (!pageDefinition&&user.role=='lead')"
             class="btn btn-outline-danger me-2"
             (click)="deleteBoxerInCompetitions(item.boxerId)"
           >

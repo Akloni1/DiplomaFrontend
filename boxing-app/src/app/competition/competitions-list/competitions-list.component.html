@@ -5,7 +5,7 @@
         Competitions
       </h2>
 
-      <button  *ngIf="user.role=='admin'"
+      <button  *ngIf="user.role=='admin'||user.role=='lead'"
        class="btn btn-success me-2" [routerLink]="['/competitions/add']">
         добавить соревнования
       </button>
@@ -13,13 +13,13 @@
         <li class="list-group-item" *ngFor="let item of competitions">
           <p>{{ item.competitionsName }} | {{ item.competitionsAddress }}</p>
 
-          <button *ngIf="user.role=='admin'"
+          <button *ngIf="user.role=='admin'||user.role=='lead'"
             [routerLink]="['/competitions', item.competitionsId]"
             class="btn btn-outline-info me-2"
           >
             изменить
           </button>
-          <button *ngIf="user.role=='admin'"
+          <button *ngIf="user.role=='admin'||user.role=='lead'"
             class="btn btn-outline-danger me-2"
             (click)="deleteCompetition(item.competitionsId)"
           >
@@ -33,13 +33,13 @@
           Принять участие 
         </button>
 
-        <button *ngIf="user.role=='admin'"
+        <button *ngIf="user.role=='admin'||user.role=='lead'"
         [routerLink]="['/competitions/boxingClub/not/participating', item.competitionsId]"
         class="btn btn-outline-info me-2"
       >
         Добавить боксерские клубы
       </button>
-      <button *ngIf="user.role=='admin'"
+      <button *ngIf="user.role=='admin'||user.role=='lead'"
       [routerLink]="['/competitions/boxingClub', item.competitionsId]"
       class="btn btn-outline-info me-2"
     >
