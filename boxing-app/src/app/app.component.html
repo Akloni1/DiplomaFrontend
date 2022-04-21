@@ -48,12 +48,12 @@
             <span class="glyphicon glyphicon-th-list"></span>  Соревнования  
         </a>
     </td>
-    <td>
+    <td *ngIf="!vavidToken">
         <a routerLink="/login" class="list-group-item" routerLinkActive="active">
             <span class="glyphicon glyphicon-th-list"></span>  Войти  
         </a>
     </td>
-  <td>
+  <td *ngIf="vavidToken">
         <a routerLink="" class="list-group-item" (click)="logout()">
             <span class="glyphicon glyphicon-th-list"></span>  Выйти  
         </a>

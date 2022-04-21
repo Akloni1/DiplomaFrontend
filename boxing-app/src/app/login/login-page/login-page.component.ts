@@ -6,54 +6,54 @@ import { Subscription, switchMap, timeout } from 'rxjs';
 import { ILogin } from '../login.interface';
 import { IBoxer } from '../login.user.interface';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss'],
 })
-export class LoginComponent  {
+export class LoginComponent {
   user: any;
   form: FormGroup;
+  token: string | null = null;
   private subscriptions$ = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router,
+    private jwtHelper: JwtHelperService
   ) {
     this.form = this.fb.group({
-    login: [null, Validators.required],
-    password: [null, Validators.required],
+      login: [null, Validators.required],
+      password: [null, Validators.required],
     });
   }
 
-  
-
   submit() {
-   
-      this.subscriptions$.add(
-        this.loginService
-          .getBoxerByLogin(this.form.value)
-          .subscribe((response) => {
-            this.user = response;
-          })
-      );
-
-if(this.user===null){
-  console.log("неверный логин")
-}
-else{
-  console.log("верный логин")
-  this.subscriptions$.add(
-    this.loginService
-      .login(this.form.value)
-      .subscribe((response: any) => {
+    
+    this.subscriptions$.add(
+      this.loginService.login(this.form.value).subscribe((response: any) => {
+        this.token = response.access_token;
         console.log(response);
-       localStorage.setItem('auth_token',response.access_token)
+        localStorage.setItem('auth_token', response.access_token);
       })
-  );
-}
-   
+    );
+
+    // this.token = localStorage.getItem('auth_token');
+    if (this.token !== null) {
+      if (this.jwtHelper.isTokenExpired(this.token)) {
+        // token expired
+        console.log('Не верный логин или пароль');
+      } else {
+        console.log('Вы авторизировались');
+        this.router.navigate(['']);
+      }
+    } else {
+      console.log('Не верный логин или пароль');
+    }
   }
 }
