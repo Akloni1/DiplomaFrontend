@@ -26,6 +26,7 @@ export class CompetitionInfoComponent implements OnInit {
     competitionsName: [null, Validators.required],
     competitionsAddress: [null, Validators.required],
     startTime: [null, Validators.required],
+    isStarted: Boolean,
     });
   }
 

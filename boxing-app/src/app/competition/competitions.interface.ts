@@ -3,5 +3,6 @@ export interface ICompetition {
     competitionsName: string;
     competitionsAddress: string;
     startTime: Date;
+    isStarted: Boolean;
   }
   

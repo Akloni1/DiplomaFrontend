@@ -11,7 +11,7 @@
       </button>
       <ul>
         <li class="list-group-item" *ngFor="let item of competitions">
-          <p>{{ item.competitionsName }} | {{ item.competitionsAddress }}</p>
+          <p>{{ item.competitionsName }} | {{ item.competitionsAddress }} | Начало: {{item.startTime | date:'yyyy-MM-dd HH:mm:ss'}}</p>
 
           <button *ngIf="user.role=='admin'||user.role=='lead'"
             [routerLink]="['/competitions', item.competitionsId]"
@@ -27,19 +27,20 @@
           </button>
 
           <button
+          *ngIf="!item.isStarted"
           [routerLink]="['/competitions/boxers/not/participating', item.competitionsId]"
           class="btn btn-outline-info me-2"
         >
           Принять участие 
         </button>
 
-        <button *ngIf="user.role=='admin'||user.role=='lead'"
+        <button *ngIf="(user.role=='admin'&&!item.isStarted)||(user.role=='lead'&&!item.isStarted)"
         [routerLink]="['/competitions/boxingClub/not/participating', item.competitionsId]"
         class="btn btn-outline-info me-2"
       >
         Добавить боксерские клубы
       </button>
-      <button *ngIf="user.role=='admin'||user.role=='lead'"
+      <button *ngIf="(user.role=='admin'&&!item.isStarted)||(user.role=='lead'&&!item.isStarted)"
       [routerLink]="['/competitions/boxingClub', item.competitionsId]"
       class="btn btn-outline-info me-2"
     >
@@ -47,6 +48,7 @@
     </button>
 
       <button
+      *ngIf="!item.isStarted"
       [routerLink]="['/competitions/boxers', item.competitionsId]"
       class="btn btn-outline-info me-2"
     >
@@ -54,6 +56,7 @@
     </button>
 
     <button
+    *ngIf="item.isStarted"
     [routerLink]="['/competitions/boxers/comparison', item.competitionsId]"
     class="btn btn-outline-info me-2"
   >

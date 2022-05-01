@@ -58,6 +58,15 @@ export class CompetitionService {
   }
 
   editCompetition(id: number, payload: ICompetition): Observable<ICompetition> {
+   
+    if(<string><unknown>payload.isStarted=="true"){
+      payload.isStarted= true;
+    }
+    else{
+      payload.isStarted= false;
+    }
+   
+   
     let header;
     let token =  localStorage.getItem('auth_token');
    if(token!==null){

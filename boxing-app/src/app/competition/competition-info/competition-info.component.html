@@ -28,12 +28,34 @@
     <div class="form-group">
       <label>Введите время начала</label>
       <input
-        type="date"
+        type="date:'yyyy-MM-dd HH:mm:ss Z'"
         class="form-control"
         formControlName="startTime"
         name="startTime"
       />
     </div>
+
+
+
+
+    <div 
+    *ngIf="id"
+    class="form-group">
+      <label>Статус соревнований</label>
+      <select
+        class="form-group"
+        class="form-control"
+        formControlName="isStarted"
+        name="isStarted"
+      >
+        <option value= {{false}} >Соревнования не начались</option>
+        <option value= {{true}} >Соревнования начались</option>
+      </select>
+    </div>
+
+
+
+    
 
     <hr />
 

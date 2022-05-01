@@ -39,12 +39,24 @@ export class LoginComponent {
       this.loginService.login(this.form.value).subscribe((response: any) => {
         this.token = response.access_token;
         console.log(response);
+
+        if (response.access_token !== null) {
+          if (this.jwtHelper.isTokenExpired(response.access_token)) {
+            // token expired
+            console.log('Не верный логин или пароль');
+          } else {
+            console.log('Вы авторизировались');
+            this.router.navigate(['']);
+          }
+        } else {
+          console.log('Не верный логин или пароль');
+        }
         localStorage.setItem('auth_token', response.access_token);
       })
     );
 
-    // this.token = localStorage.getItem('auth_token');
-    if (this.token !== null) {
+   
+   /* if (this.token !== null) {
       if (this.jwtHelper.isTokenExpired(this.token)) {
         // token expired
         console.log('Не верный логин или пароль');
@@ -54,6 +66,6 @@ export class LoginComponent {
       }
     } else {
       console.log('Не верный логин или пароль');
-    }
+    }*/
   }
 }

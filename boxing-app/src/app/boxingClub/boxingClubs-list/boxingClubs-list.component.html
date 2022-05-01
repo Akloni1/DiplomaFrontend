@@ -5,7 +5,7 @@
           BoxingClubs
         </h2>
   
-        <button *ngIf="(user.role=='admin')||(user.role=='lead')"
+        <button *ngIf="(user.role=='lead')"
         class="btn btn-success me-2" [routerLink]="['/boxingClubs/add']">
           добавить боксерский клуб
         </button>
@@ -16,14 +16,14 @@
             </p>
   
             <button
-              *ngIf="(user.role=='admin')||(user.role=='lead')"
+              *ngIf="(user.role=='lead')"
               [routerLink]="['/boxingClubs', item.boxingClubId]"
               class="btn btn-outline-info me-2"
             >
               изменить
             </button>
             <button
-              *ngIf="(user.role=='admin')||(user.role=='lead')"
+              *ngIf="(user.role=='lead')"
               class="btn btn-outline-danger me-2"
               (click)="deleteBoxingClub(item.boxingClubId)"
             >

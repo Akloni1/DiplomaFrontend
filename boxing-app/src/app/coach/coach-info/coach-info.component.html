@@ -39,13 +39,22 @@
 
       <div class="form-group">
         <label>Введите спортивное звание</label>
-        <input
+        <select
+          class="form-group"
           type="text"
           class="form-control"
           formControlName="sportsTitle"
           name="sportsTitle"
-        />
+        >
+          <option value="МСМК">МСМК</option>
+          <option value="МС">МС</option>
+          <option value="КМС">КМС</option>
+        </select>
       </div>
+
+
+
+
 
       <div *ngIf="!id" class="form-group">
         <label>Введите логин</label>
