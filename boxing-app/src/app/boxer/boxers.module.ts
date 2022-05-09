@@ -18,6 +18,9 @@ import { BoxerService } from "./boxer.service";
 import { BoxersRoutingModule } from "./boxers.routing.module";
 import { PowPipe } from "./pow.pipe";
 import { SharedModule } from "../shared/shared.module";
+import { MatButtonModule } from "@angular/material/button";
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { SharedModule } from "../shared/shared.module";
     FormsModule,
     ReactiveFormsModule,
     BoxersRoutingModule,
-    SharedModule
+    SharedModule,
+    MatButtonModule
 ],
   providers: [BoxerService] 
 })

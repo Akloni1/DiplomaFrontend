@@ -1,67 +1,79 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h2 appBackground [hoverColor]="'blue'" [defColor]="'transparent'">
-        Competitions
-      </h2>
-
+      
+      <ul>
+      <div class="example-button-row">
       <button  *ngIf="user.role=='admin'||user.role=='lead'"
-       class="btn btn-success me-2" [routerLink]="['/competitions/add']">
+       mat-raised-button 
+       [routerLink]="['/competitions/add']">
         добавить соревнования
       </button>
-      <ul>
+      </div>
+     
         <li class="list-group-item" *ngFor="let item of competitions">
           <p>{{ item.competitionsName }} | {{ item.competitionsAddress }} | Начало: {{item.startTime | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-
+          <div class="example-button-row">
           <button *ngIf="user.role=='admin'||user.role=='lead'"
             [routerLink]="['/competitions', item.competitionsId]"
-            class="btn btn-outline-info me-2"
+            mat-raised-button 
           >
             изменить
           </button>
-          <button *ngIf="user.role=='admin'||user.role=='lead'"
-            class="btn btn-outline-danger me-2"
-            (click)="deleteCompetition(item.competitionsId)"
+          </div>
+          <div class="example-button-row">
+          <button 
+          
+          *ngIf="user.role=='admin'||user.role=='lead'"
+          mat-raised-button color="warn"
+          (click)="deleteCompetition(item.competitionsId)"
           >
             Удалить
           </button>
-
+          </div>
+          <div class="example-button-row">
           <button
           *ngIf="!item.isStarted"
           [routerLink]="['/competitions/boxers/not/participating', item.competitionsId]"
-          class="btn btn-outline-info me-2"
+          mat-raised-button 
         >
           Принять участие 
         </button>
-
+        <div class="example-button-row">
+        <div class="example-button-row"></div>
         <button *ngIf="(user.role=='admin'&&!item.isStarted)||(user.role=='lead'&&!item.isStarted)"
         [routerLink]="['/competitions/boxingClub/not/participating', item.competitionsId]"
-        class="btn btn-outline-info me-2"
+        mat-raised-button 
       >
         Добавить боксерские клубы
       </button>
+        </div>
+        <div class="example-button-row"></div>
       <button *ngIf="(user.role=='admin'&&!item.isStarted)||(user.role=='lead'&&!item.isStarted)"
       [routerLink]="['/competitions/boxingClub', item.competitionsId]"
-      class="btn btn-outline-info me-2"
+      mat-raised-button 
     >
       удалить боксерские клубы
     </button>
-
+          </div>
+          <div class="example-button-row">
       <button
       *ngIf="!item.isStarted"
       [routerLink]="['/competitions/boxers', item.competitionsId]"
-      class="btn btn-outline-info me-2"
+      mat-raised-button 
     >
       Смотреть участников
     </button>
-
+     </div>
+     <div class="example-button-row">
     <button
     *ngIf="item.isStarted"
     [routerLink]="['/competitions/boxers/comparison', item.competitionsId]"
-    class="btn btn-outline-info me-2"
+    mat-raised-button 
   >
     Жеребьевка
   </button>
+     </div>
         </li>
       </ul>
     </div>

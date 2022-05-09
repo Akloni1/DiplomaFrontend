@@ -6,6 +6,7 @@ import { LoginComponent } from './login-page/login-page.component';
 import { LoginService } from "./login.service";
 import { LoginRoutingModule } from "./login.routing.module";
 import { SharedModule } from "../shared/shared.module";
+import { MatButtonModule } from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SharedModule } from "../shared/shared.module";
     FormsModule,
     ReactiveFormsModule,
     LoginRoutingModule,
-    SharedModule
+    SharedModule,
+    MatButtonModule
 ],
   providers: [LoginService] 
 })

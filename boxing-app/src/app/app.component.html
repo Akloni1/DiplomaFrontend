@@ -1,25 +1,51 @@
-
-
-
-
-<!--<app-boxer></app-boxer>
+<body>
 <div class="container">
-    <div class="row">
-        <div class=".col-xs-12">
-            <div>
-                {{coacher | json}}
-            </div>
-        </div>
-    </div>
-</div>
-<app-form></app-form>-->
 
-<!--<app-boxer></app-boxer>
+    <nav mat-tab-nav-bar  [tabPanel]="tabPanel">
+    
+        <a mat-tab-link 
+        routerLink=""
+        (click)="activeLink = 'главная'"
+        [active]="activeLink == 'главная'"
+        >главная</a>
 
-<app-home></app-home>-->
-<div class="container">
+        <a mat-tab-link 
+        routerLink="/boxers"
+        (click)="activeLink = 'боксеры'"
+        [active]="activeLink == 'боксеры'"
+        >боксеры</a>
+        <a mat-tab-link 
+        routerLink="/boxingClubs"
+        (click)="activeLink = 'Боксерские клубы '"
+        [active]="activeLink == 'Боксерские клубы '"
+        >Боксерские клубы </a>
+        <a mat-tab-link 
+        routerLink="/coach"
+        (click)="activeLink = 'Тренеры'"
+        [active]="activeLink == 'Тренеры'"
+        >Тренеры</a>
+        <a mat-tab-link 
+        routerLink="/competitions"
+        (click)="activeLink = 'Соревнования'"
+        [active]="activeLink == 'Соревнования'"
+        >Соревнования</a>
+        <a *ngIf="!vavidToken"
+        mat-tab-link 
+        routerLink="/login"
+        (click)="activeLink = 'Войти'"
+        [active]="activeLink == 'Войти'"
+        >Войти</a>
+        <a *ngIf="vavidToken"
+        mat-tab-link 
+        (click)="logout()"
+        (click)="activeLink = 'Выйти'"
+        [active]="activeLink == 'Выйти'"
+        >Выйти</a>
+      </nav>
+      <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+    
     <nav class="navbar navbar-default">
-<table  class="table table-striped">
+<!-- <table  class="table table-striped">
     <tr class="table-dark">
         <td >
             <a routerLink="" class="list-group-item"  routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" >
@@ -59,8 +85,9 @@
         </a>
     </td>
       </tr>
-</table>
+</table> -->
 </nav>
 <router-outlet> </router-outlet>
 
 </div>
+</body>

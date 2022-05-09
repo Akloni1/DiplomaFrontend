@@ -26,8 +26,9 @@ import { BoxingClubModule } from './boxingClub/boxingClub.module';
 import { CoachModule } from './coach/coach.module';
 import { CompetitionsModule } from './competition/competitions.module';
 import { LoginModule } from './login/login.module';
-
 import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 @NgModule({
@@ -57,7 +58,9 @@ import { JwtHelperService, JWT_OPTIONS  } from '@auth0/angular-jwt';
     CoachModule,
     CompetitionsModule,
     LoginModule,
-    SharedModule
+    SharedModule,
+    MatButtonModule,
+    MatTabsModule
 
   ],
   providers: [ { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },

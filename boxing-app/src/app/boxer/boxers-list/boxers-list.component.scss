@@ -1,13 +1,18 @@
-.box{
-    color:rgb(73, 72, 73);
-}
-button {
-    margin-top: 20px ;
-   
-}
-input {
-   margin-bottom: 20px;
-}
-.white-text{
-    color: rgb(255, 255, 255);
-}
+
+  
+  .example-button-row {
+    display: table-cell;
+    width: 10px;
+  }
+  
+  .example-button-row .mat-button-base {
+    margin: 8px 8px 8px 0;
+  }
+  
+  
+  li{
+      background-color:  #f0f0f0;
+  }
+  
+ 
+  

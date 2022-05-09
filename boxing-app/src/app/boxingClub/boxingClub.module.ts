@@ -8,6 +8,7 @@ import { BoxingClubsListComponents } from './boxingClubs-list/boxingClubs-list.c
 import { BoxingClubService } from './boxingClub.service';
 import { BoxingClubRoutingModule } from './boxingClub.routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     BoxingClubRoutingModule,
     SharedModule,
+    MatButtonModule
   ],
   providers: [BoxingClubService],
 })

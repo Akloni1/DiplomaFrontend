@@ -8,6 +8,7 @@ import { CoachesListComponents } from './coaches-list/coaches-list.component';
 import { CoachService } from './coach.service';
 import { CoachRoutingModule } from './coach.routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     CoachRoutingModule,
     SharedModule,
+    MatButtonModule
   ],
   providers: [CoachService],
 })

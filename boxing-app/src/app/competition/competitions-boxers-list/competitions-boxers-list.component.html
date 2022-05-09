@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -41,7 +42,7 @@
             (pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)||
             (pageDefinition&&user.role=='lead')"
 
-            class="btn btn-outline-info me-2"
+            mat-raised-button 
             (click)="addBoxerInCompetitions(item.boxerId)"
           >
             Добавить боксера
@@ -51,7 +52,7 @@
             (!pageDefinition&&user.role=='coach'&&user.coachId==item.coachId)||
             (!pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)||
             (!pageDefinition&&user.role=='lead')"
-            class="btn btn-outline-danger me-2"
+            mat-raised-button 
             (click)="deleteBoxerInCompetitions(item.boxerId)"
           >
             удалить боксера

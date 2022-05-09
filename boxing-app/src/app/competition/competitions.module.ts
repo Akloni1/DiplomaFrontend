@@ -11,6 +11,7 @@ import { ComparisonBoxersListComponents } from './competitions-comparison-boxers
 import { CompetitionService } from './competitions.service';
 import { CompetitionRoutingModule } from './competitions.routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     CompetitionRoutingModule,
     SharedModule,
+   MatButtonModule
   ],
   providers: [CompetitionService],
 })

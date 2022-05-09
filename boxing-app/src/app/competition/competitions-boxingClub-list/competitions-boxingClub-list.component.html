@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
@@ -23,14 +24,14 @@
           <p>{{ item.clubName }} | {{ item.clubAddress }} |</p>
           <button
             *ngIf="(pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)||(pageDefinition&&user.role=='lead')"
-            class="btn btn-outline-info me-2"
+            mat-raised-button 
             (click)="addBoxingClubInCompetitions(item.boxingClubId)"
           >
             Добавить клуб
           </button>
           <button
             *ngIf="(!pageDefinition&&user.role=='admin'&&user.boxingClubId==item.boxingClubId)||(!pageDefinition&&user.role=='lead')"
-            class="btn btn-outline-danger me-2"
+            mat-raised-button 
             (click)="deleteBoxingClubInCompetitions(item.boxingClubId)"
           >
             удалить клуб
@@ -40,3 +41,4 @@
     </div>
   </div>
 </div>
+
